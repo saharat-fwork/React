@@ -33,7 +33,9 @@ function Customer() {
               <p class="font-medium text-sm sm:text-sm m-0">
                 เพิ่ม / แก้ไข ข้อมูลนักเรียน
               </p>
-              <p class="font-medium text-xs sm:text-xs opacity-50">add, edit, delete</p>
+              <p class="font-medium text-xs sm:text-xs opacity-50">
+                add, edit, delete
+              </p>
             </div>
             <div className="flex flex-row justify-start items-start gap-5">
               <button
@@ -220,14 +222,12 @@ function Customer() {
                   {" "}
                   วันที่ทำรายการ
                 </span>
-                <span className=" text-center col-span-2">
-                  สถานะการชำระเงิน
-                </span>
+                <span className=" text-center col-span-2">สถานะ</span>
                 <span className=" text-left sm:text-center col-span-2">
-                  ประเภทการชำระเงิน
+                  ประเภท
                 </span>
                 <span className=" text-left lg:text-center col-span-2">
-                  ราคาสุทธิ
+                  ราคา
                 </span>
                 <span className=" text-left lg:text-center col-span-2">
                   เบอร์โทรศัพท์
@@ -245,13 +245,13 @@ function Customer() {
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Kbank
+                    ##############
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    100 ฿
+                    ############## ฿
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    084-714-1576
+                    ##############{" "}
                   </span>
                   <button
                     type="button"
@@ -284,17 +284,17 @@ function Customer() {
                   </span>
                   <div className="flex items-center justify-center col-span-2">
                     <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-                      Success
+                      ##############
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Kbank
+                    ##############
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    100 ฿
+                    ############## ฿
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    084-714-1576
+                    ##############{" "}
                   </span>
                   <button
                     type="button"
@@ -327,17 +327,17 @@ function Customer() {
                   </span>
                   <div className="flex items-center justify-center col-span-2">
                     <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-                      Success
+                      ##############
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Truemoney Wallet
+                    ##############{" "}
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    100 ฿
+                    ############## ฿
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    090-974-2946
+                    ##############{" "}
                   </span>
                   <button
                     type="button"
@@ -370,17 +370,17 @@ function Customer() {
                   </span>
                   <div className="flex items-center justify-center col-span-2">
                     <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-                      Success
+                      ##############
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Kbank
+                    ##############
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    200 ฿
+                    ############## ฿
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    092-474-7859
+                    ##############{" "}
                   </span>
                   <button
                     type="button"
@@ -413,17 +413,17 @@ function Customer() {
                   </span>
                   <div className="flex items-center justify-center col-span-2">
                     <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-                      Success
+                      ##############
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Kbank
+                    ##############
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    100 ฿
+                    ############## ฿
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    086-361-0263
+                    ##############{" "}
                   </span>
                   <button
                     type="button"
@@ -456,17 +456,17 @@ function Customer() {
                   </span>
                   <div className="flex items-center justify-center col-span-2">
                     <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-                      Success
+                      ##############
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Kbank
+                    ##############
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    60 ฿
+                    ############## ฿
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    063-650-4173
+                    ##############{" "}
                   </span>
                   <button
                     type="button"
@@ -499,17 +499,17 @@ function Customer() {
                   </span>
                   <div className="flex items-center justify-center col-span-2">
                     <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-                      Success
+                      ##############
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Shopee
+                    ##############{" "}
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    100 ฿
+                    ##############{" "}
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    087-518-3213
+                    ##############{" "}
                   </span>
                   <button
                     type="button"
@@ -543,17 +543,17 @@ function Customer() {
                   </span>
                   <div className="flex items-center justify-center col-span-2">
                     <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-                      Success
+                      ##############
                     </span>
                   </div>
                   <span className="flex items-center justify-center text-center col-span-2">
-                    Kbank
+                    ##############
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-2">
-                    200 ฿
+                    ############## ฿
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center col-span-2">
-                    086-500-5144
+                    0##############
                   </span>
                   <button
                     type="button"
@@ -614,7 +614,7 @@ function Customer() {
               <path d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"></path>
             </svg>
           </span>
-          <span className="sr-only">Scroll to Top</span>
+          <span className="sr-only">##############</span>
         </button>
       </div>
     </div>
