@@ -1,13 +1,7 @@
 import React from "react";
-
-// import "antd/dist/antd.css";
-// import "antd/dist/antd.less";
 import "antd/dist/antd.min.css";
-
-import image from "./assets/ghost-100.svg";
-
 import "./SiderDemo.css";
-
+import Customer from "./Customer";
 import { Layout, Menu } from "antd";
 import {
   MenuUnfoldOutlined,
@@ -17,6 +11,8 @@ import {
   //   TeamOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
+
+import image from "./assets/ghost-100.svg";
 
 const { Header, Sider, Content } = Layout;
 
@@ -61,7 +57,6 @@ class SiderDemo extends React.Component {
           collapsible
           collapsed={this.state.collapsed}
           className="ant-layout-sider-light"
-          // style="border-right: 1px solid rgb(240, 240, 240); flex: 0 0 80px; max-width: 80px; min-width: 80px; width: 80px;"
           style={{
             borderRight: "1px solid rgb(240, 240, 240)",
             flex: "0 0 80px",
@@ -146,7 +141,9 @@ class SiderDemo extends React.Component {
               </button>
             </div>
           </Header>
-          <Content></Content>
+          <Content>
+            <Customer />
+          </Content>
         </Layout>
       </Layout>
     );
