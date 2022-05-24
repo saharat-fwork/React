@@ -1,6 +1,9 @@
 import React from "react";
 
-import "antd/dist/antd.css";
+// import "antd/dist/antd.css";
+// import "antd/dist/antd.less";
+import "antd/dist/antd.min.css";
+
 import image from "./assets/ghost-100.svg";
 
 import "./SiderDemo.css";
