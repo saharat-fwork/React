@@ -195,24 +195,24 @@ function Customer() {
             </div>
             <section className="bg-gray-100 m-4 sm:m-6 p-0.5 sm:p-4 rounded-md gap-2 flex flex-col">
               <div className="bg-white relative rounded-md gap-1 hidden sm:grid sm:grid-cols-11 px-6 py-2">
-                <span className="font-normal  text-center gap-2 col-span-1">
+                <span className="font-normal font-bold  text-center gap-2 col-span-1">
                   {" "}
                   ID
                 </span>
-                <span className=" text-center col-span-1">Class</span>
-                <span className=" text-left sm:text-center col-span-2">
+                <span className=" text-center font-bold col-span-1">Class</span>
+                <span className=" text-left font-bold sm:text-center col-span-2">
                   First Name
                 </span>
-                <span className=" text-left lg:text-center col-span-2">
+                <span className=" text-left font-bold lg:text-center col-span-2">
                   Last Name
                 </span>
-                <span className=" text-left lg:text-center col-span-1">
+                <span className=" text-left font-bold lg:text-center col-span-1">
                   Math
                 </span>
-                <span className=" text-left lg:text-center col-span-1">
+                <span className=" text-left font-bold lg:text-center col-span-1">
                   English
                 </span>
-                <span className=" text-left lg:text-center col-span-1">
+                <span className=" text-left font-bold lg:text-center col-span-1">
                   Science
                 </span>
               </div>
@@ -234,13 +234,13 @@ function Customer() {
                     KeyboardMaster
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
-                    80
+                    80/100
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
-                    90
+                    90/100
                   </span>
                   <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
-                    70
+                    70/100
                   </span>
                   <button
                     type="button"
