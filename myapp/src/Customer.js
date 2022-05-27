@@ -1,6 +1,44 @@
+import React, { useEffect, useState } from "react";
+
 import "./Customer.css";
 
 function Customer() {
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+ 
+
+  const [items, setItems] = useState([]);
+  const [lenStudents, setlenStudents] = useState([]);
+
+  const fetchItems = async () => {
+    console.log("112");
+    // const data = await fetch("http://localhost:4000/getstudents");
+
+    // const items = await data.json();
+    // console.log(items);
+
+    try {
+      const response = await fetch("http://localhost:4000/getstudents", {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const items = await response.json();
+      // console.log(items);
+      setlenStudents(items.length);
+      setItems(items);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="w-full h-full bg-gray-50">
       <div className="flex flex-col w-full h-full p-2 sm:p-6 bg-gray-100">
@@ -51,7 +89,7 @@ function Customer() {
           <section className=" w-full bg-white rounded-md shadow-sm border border-gray-200">
             <div className="flex flex-col gap-6 justify-between items-baseline px-5 py-4 border-b border-gray-100">
               <h2 className="font-medium mb-0 text-base sm:text-lg text-gray-800  ">
-                รายชื่อนักเรียนทั้งหมด (8)
+                รายชื่อนักเรียนทั้งหมด ({lenStudents})
               </h2>
 
               <section className="mx-auto max-w-2xl flex flex-col sm:flex-row gap-1 justify-between items-start">
@@ -216,56 +254,61 @@ function Customer() {
                   Science
                 </span>
               </div>
+
               <div className="overflow-x-auto">
-                <article className="bg-white relative rounded-md gap-1 grid grid-cols-1 sm:grid-cols-11 px-6 py-2 mb-3 sm:mb-1">
-                  <span className="flex text-gray-400 font-normal justify-center sm:justify-center items-center gap-2 col-span-1 text-center">
-                    {" "}
-                    1{" "}
-                  </span>
-                  <div className="flex items-center justify-center col-span-1">
-                    <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
-                      Class 1
-                    </span>
-                  </div>
-                  <span className="flex items-center justify-center text-center col-span-2">
-                    Balloon
-                  </span>
-                  <span className="flex items-center justify-center text-left lg:text-center   col-span-2">
-                    KeyboardMaster
-                  </span>
-                  <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
-                    80/100
-                  </span>
-                  <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
-                    90/100
-                  </span>
-                  <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
-                    70/100
-                  </span>
-                  <button
-                    type="button"
-                    className="flex items-center justify-center col-span-1"
+                {items.map((item) => (
+                  <article
+                    className="bg-white relative rounded-md gap-1 grid grid-cols-1 sm:grid-cols-11 px-6 py-2 mb-3 sm:mb-1"
+                    key={item.id}
                   >
-                    <span
-                      role="img"
-                      aria-label="info-circle"
-                      className="anticon anticon-info-circle"
-                    >
-                      <svg
-                        viewBox="64 64 896 896"
-                        focusable="false"
-                        data-icon="info-circle"
-                        width="1em"
-                        height="1em"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
-                        <path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path>
-                      </svg>
+                    <span className="flex text-gray-400 font-normal justify-center sm:justify-center items-center gap-2 col-span-1 text-center">
+                      {item.id}
                     </span>
-                  </button>
-                </article>
+                    <div className="flex items-center justify-center col-span-1">
+                      <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
+                        {"Class " + item.id_class}
+                      </span>
+                    </div>
+                    <span className="flex items-center justify-center text-center col-span-2">
+                      {item.first_name}
+                    </span>
+                    <span className="flex items-center justify-center text-left lg:text-center   col-span-2">
+                      {item.last_name}
+                    </span>
+                    <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
+                      80/100
+                    </span>
+                    <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
+                      90/100
+                    </span>
+                    <span className="flex items-center justify-center text-left lg:text-center font-bold text-blue-800 col-span-1">
+                      70/100
+                    </span>
+                    <button
+                      type="button"
+                      className="flex items-center justify-center col-span-1"
+                    >
+                      <span
+                        role="img"
+                        aria-label="info-circle"
+                        className="anticon anticon-info-circle"
+                      >
+                        <svg
+                          viewBox="64 64 896 896"
+                          focusable="false"
+                          data-icon="info-circle"
+                          width="1em"
+                          height="1em"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+                          <path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"></path>
+                        </svg>
+                      </span>
+                    </button>
+                  </article>
+                ))}
               </div>
             </section>
           </section>

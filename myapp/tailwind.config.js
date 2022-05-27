@@ -8,6 +8,7 @@ module.exports = {
     // },
     extend: {
       fontFamily: {
+        // font: ["Imprima", "sans-serif"],
         font: ["Prompt", "Tahoma", "sans-serif"],
       },
     },
