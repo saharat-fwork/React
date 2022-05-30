@@ -15,22 +15,40 @@ router.get("/getStudents", async (req, res) => {
     if (err) throw err;
 
     try {
-        const qry = `SELECT * FROM tbl_students`;
+      const qryStudent = `SELECT * FROM students`;
 
-      // const qry = ` 
-      //                 SELECT tbl_students.id, tbl_students.first_name, tbl_students.last_name, tbl_class.class_group, tbl_gender.gender
-      //                 FROM tbl_students
-      //                 JOIN tbl_gender
-      //                 ON tbl_students.id_gender = tbl_gender.id
-      //                 JOIN tbl_class
-      //                 ON tbl_students.id_class = tbl_class.id
-      // `;
-                    
-      conn.query(qry, (err, result) => {
-        // conn.release();
+      conn.query(qryStudent, (err, result) => {
         if (err) throw err;
+
         res.send(JSON.stringify(result));
-        console.log("call - GET");
+        console.log("call - GET student");
+      });
+    } catch (err) {
+      console.log(err);
+      res.end();
+    }
+  });
+});
+router.get("/getScore", async (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) throw err;
+
+    let str = ``;
+    try {
+      const qryScore =
+        `  SELECT school_subject.subject, student_score.score
+                            FROM student_score
+                            INNER JOIN school_subject 
+                            ON school_subject.id = student_score.subject_id
+                            WHERE student_score.student_id = ` +
+        { qryStudent } +
+        `
+        `;
+      conn.query(qryScore, (err, result) => {
+        if (err) throw err;
+
+        res.send(JSON.stringify(result));
+        console.log("call - GET score");
       });
     } catch (err) {
       console.log(err);
@@ -73,15 +91,11 @@ router.post("/addScore", async (req, res) => {
     if (err) throw err;
 
     const qry = `INSERT INTO tbl_score (id_student, id_subject, score) VALUES(?,?,?)`;
-    conn.query(
-      qry,
-      [student_id, subject_id, score],
-      (err, result) => {
-        conn.release();
-        if (err) throw err;
-        console.log("Score added!");
-      }
-    );
+    conn.query(qry, [student_id, subject_id, score], (err, result) => {
+      conn.release();
+      if (err) throw err;
+      console.log("Score added!");
+    });
 
     res.redirect("/getStudents");
     res.end();

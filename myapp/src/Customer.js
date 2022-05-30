@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import "./Customer.css";
 
@@ -6,8 +7,6 @@ function Customer() {
   useEffect(() => {
     fetchItems();
   }, []);
-
- 
 
   const [items, setItems] = useState([]);
   const [lenStudents, setlenStudents] = useState([]);
@@ -20,25 +19,63 @@ function Customer() {
     // console.log(items);
 
     try {
-      const response = await fetch("http://localhost:4000/getstudents", {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-        },
-      });
+      //   const response = await fetch("http://localhost:4000/getstudents", {
+      //     method: "GET",
+      //     headers: {
+      //       accept: "application/json",
+      //     },
+      //   });
 
-      if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
-      }
+      //   if (!response.ok) {
+      //     throw new Error(`Error! status: ${response.status}`);
+      //   }
 
-      const items = await response.json();
+      // const items = await response.json();
+      // // console.log(items);
+      // setlenStudents(items.length);
+      // setItems(items);
       // console.log(items);
-      setlenStudents(items.length);
-      setItems(items);
+      await axios
+        .get("http://localhost:4000/getstudents")
+        .then((response) => {
+          const items = response.data;
+          setlenStudents(items.length);
+          setItems(items);
+          console.log(items);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } catch (err) {
       console.log(err);
     }
   };
+
+  // const class_room = () => {
+  //   let class_room_name;
+
+  //   console.log("items.class : " + JSON.stringify(items[1].class));
+
+  //   if (items.class === 1) {
+  //     class_room_name = (
+  //       <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
+  //         Class 1
+  //       </span>
+  //     );
+  //   } else if (items.class === 2) {
+  //     class_room_name = (
+  //       <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
+  //         Class 2
+  //       </span>
+  //     );
+  //   } else if (items.class === 3) {
+  //     class_room_name = (
+  //       <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-yellow-100 text-yellow-800">
+  //         Class 3
+  //       </span>
+  //     );
+  //   }
+  // };
   return (
     <div className="w-full h-full bg-gray-50">
       <div className="flex flex-col w-full h-full p-2 sm:p-6 bg-gray-100">
@@ -265,9 +302,50 @@ function Customer() {
                       {item.id}
                     </span>
                     <div className="flex items-center justify-center col-span-1">
-                      <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
-                        {"Class " + item.id_class}
-                      </span>
+                      {/* <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
+                        {"Class " + item.class}
+                      </span> */}
+                      {/* {() => {
+                        if ((item.class = 1))
+                          return (
+                            <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
+                              Class 1
+                            </span>
+                          );
+                        return (
+                          <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
+                            Class 2
+                          </span>
+                        );
+                      }} */}
+                      {(() => {
+                        switch (item.class) {
+                          case 1:
+                            return (
+                              <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
+                                Class 1
+                              </span>
+                            );
+                          case 2:
+                            return (
+                              <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
+                                Class 2
+                              </span>
+                            );
+                          case 3:
+                            return (
+                              <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-yellow-100 text-yellow-800">
+                                Class 3
+                              </span>
+                            );
+                          default:
+                            return (
+                              <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-red-100 text-red-800">
+                                No Class
+                              </span>
+                            );
+                        }
+                      })()}
                     </div>
                     <span className="flex items-center justify-center text-center col-span-2">
                       {item.first_name}

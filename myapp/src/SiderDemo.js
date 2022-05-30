@@ -36,7 +36,7 @@ const items = [
 ];
 class SiderDemo extends React.Component {
   state = {
-    collapsed: false,
+    collapsed: true,
   };
 
   toggle = () => {
