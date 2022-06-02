@@ -1,81 +1,50 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-
+import React, { useState } from "react";
+// useEffect,
 import "./Customer.css";
 
-function Customer() {
-  useEffect(() => {
-    fetchItems();
-  }, []);
+import { fetchStudents } from "./api/fetchStudents";
+
+// function Customer() {
+const Customer = () => {
+  // useEffect(() => {
+  //   fetchItems();
+  // }, []);
 
   const [items, setItems] = useState([]);
-  const [lenStudents, setlenStudents] = useState([]);
+  const [lenStudents, setLengthStudents] = useState([]);
 
-  const fetchItems = async () => {
-    console.log("112");
-    // const data = await fetch("http://localhost:4000/getstudents");
-
-    // const items = await data.json();
-    // console.log(items);
-
-    try {
-      //   const response = await fetch("http://localhost:4000/getstudents", {
-      //     method: "GET",
-      //     headers: {
-      //       accept: "application/json",
-      //     },
-      //   });
-
-      //   if (!response.ok) {
-      //     throw new Error(`Error! status: ${response.status}`);
-      //   }
-
-      // const items = await response.json();
-      // // console.log(items);
-      // setlenStudents(items.length);
-      // setItems(items);
-      // console.log(items);
-      await axios
-        .get("http://localhost:4000/getstudents")
-        .then((response) => {
-          const items = response.data;
-          setlenStudents(items.length);
-          setItems(items);
-          console.log(items);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    } catch (err) {
-      console.log(err);
-    }
+  const search = async () => {
+    // if (event.key === "Enter") {
+    console.log("click - search");
+    const data = await fetchStudents();
+    console.log("data" + data);
+    setLengthStudents(data.length);
+    setItems(data);
+    // }
+    // else {
+    //   const err = handleClick();
+    // }
   };
 
-  // const class_room = () => {
-  //   let class_room_name;
-
-  //   console.log("items.class : " + JSON.stringify(items[1].class));
-
-  //   if (items.class === 1) {
-  //     class_room_name = (
-  //       <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-blue-100 text-blue-800">
-  //         Class 1
-  //       </span>
-  //     );
-  //   } else if (items.class === 2) {
-  //     class_room_name = (
-  //       <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-green-100 text-green-800">
-  //         Class 2
-  //       </span>
-  //     );
-  //   } else if (items.class === 3) {
-  //     class_room_name = (
-  //       <span className="px-2 inline-flex text-center text-xs leading-5 font-semibold rounded-full col-span-1 bg-yellow-100 text-yellow-800">
-  //         Class 3
-  //       </span>
-  //     );
+  // const fetchItems = async () => {
+  //   console.log("112");
+  //   try {
+  //     await axios
+  //       .get("http://localhost:4000/getstudents")
+  //       .then((response) => {
+  //         const items = response.data;
+  //         setlenStudents(items.length);
+  //         setItems(items);
+  //         console.log(items);
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //   } catch (err) {
+  //     console.log(err);
   //   }
   // };
+
   return (
     <div className="w-full h-full bg-gray-50">
       <div className="flex flex-col w-full h-full p-2 sm:p-6 bg-gray-100">
@@ -125,10 +94,18 @@ function Customer() {
         <div className="w-full">
           <section className=" w-full bg-white rounded-md shadow-sm border border-gray-200">
             <div className="flex flex-col gap-6 justify-between items-baseline px-5 py-4 border-b border-gray-100">
-              <h2 className="font-medium mb-0 text-base sm:text-lg text-gray-800  ">
+              {/* <h2 className="font-medium mb-0 text-base sm:text-lg text-gray-800  ">
                 รายชื่อนักเรียนทั้งหมด ({lenStudents})
-              </h2>
-
+              </h2> */}
+              {(
+                <h2 className="font-medium mb-0 text-base sm:text-lg text-gray-800  ">
+                  รายชื่อนักเรียนทั้งหมด ({lenStudents})
+                </h2>
+              ) && (
+                <h2 className="font-medium mb-0 text-base sm:text-lg text-gray-800  ">
+                  No Data ({lenStudents})
+                </h2>
+              )}
               <section className="mx-auto max-w-2xl flex flex-col sm:flex-row gap-1 justify-between items-start">
                 <div className="w-full flex flex-col gap-1 mb-1">
                   <div className="flex flex-row gap-2">
@@ -255,6 +232,7 @@ function Customer() {
                     <button
                       className="btn-primary flex justify-center items-center h-8 "
                       type="submit"
+                      onClick={search}
                     >
                       ค้นหา
                     </button>
@@ -394,6 +372,6 @@ function Customer() {
       </div>
     </div>
   );
-}
+};
 
 export default Customer;

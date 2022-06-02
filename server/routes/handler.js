@@ -33,7 +33,7 @@ router.get("/getScore", async (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) throw err;
 
-    let str = ``;
+    // let str = ``;
     try {
       const qryScore =
         `  SELECT school_subject.subject, student_score.score
