@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import "./Customer.css";
 
 import { fetchStudents } from "./api/fetchStudents";
+import { DownOutlined } from "@ant-design/icons";
+
+import { Button, Dropdown, Menu, Space } from "antd";
 
 // function Customer() {
 const Customer = () => {
@@ -13,6 +16,59 @@ const Customer = () => {
   const [items, setItems] = useState([]);
   const [lenStudents, setLengthStudents] = useState([]);
 
+  //------------
+
+  const [selectClass, setSelectClass] = useState("");
+  const [selectSubject, setSubject] = useState("");
+  const handleMenuClick_class = (e) => {
+    // message.info("Click on menu item.");
+    console.log("click - ", e.key);
+    setSelectClass(""+e.key);
+  };
+  const handleMenuClick_subject = (e) => {
+    // message.info("Click on menu item.");
+    console.log("click - ", e.key);
+    setSubject(""+e.key);
+  };
+  const menuClass = (
+    <Menu
+      onClick={handleMenuClick_class}
+      items={[
+        {
+          label: "Class 1",
+          key: "Class 1",
+        },
+        {
+          label: "Class 2",
+          key: "Class 2",
+        },
+        {
+          label: "Class 3",
+          key: "Class 3",
+        },
+      ]}
+    />
+  );
+  const menuSubject = (
+    <Menu
+      onClick={handleMenuClick_subject}
+      items={[
+        {
+          label: "Math",
+          key: "Math",
+        },
+        {
+          label: "Eng",
+          key: "Eng",
+        },
+        {
+          label: "Science",
+          key: "Science",
+        },
+      ]}
+    />
+  );
+  //------------
   const search = async () => {
     // if (event.key === "Enter") {
     console.log("click - search");
@@ -24,6 +80,10 @@ const Customer = () => {
     // else {
     //   const err = handleClick();
     // }
+  };
+
+  const clickLog = () => {
+    console.log("[LOG] - Click reset");
   };
 
   // const fetchItems = async () => {
@@ -110,7 +170,16 @@ const Customer = () => {
                 <div className="w-full flex flex-col gap-1 mb-1">
                   <div className="flex flex-row gap-2">
                     <div className="inline-block text-left">
-                      <button
+                      <Dropdown overlay={menuClass}>
+                        <Button>
+                          <Space>
+                            {selectClass == ""? "Select Class": selectClass }
+                            <DownOutlined />
+                          </Space>
+                        </Button>
+                      </Dropdown>
+
+                      {/* <button
                         type="button"
                         className="z-10 inline-flex justify-between w-full h-8 px-4 py-1 border-2 border-gray-200 rounded-md hover:border-primary focus:outline-none focus:border-primary transition-colors"
                         id="menu-button"
@@ -139,8 +208,8 @@ const Customer = () => {
                             clipRule="evenodd"
                           ></path>
                         </svg>
-                      </button>
-                      <div className="dropdown_dropdown-menu__2Tcv5  opacity-0 invisible transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+                      </button> */}
+                      {/* <div className="dropdown_dropdown-menu__2Tcv5  opacity-0 invisible transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
                         <div
                           className="undefined null origin-top-right absolute left-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                           role="menu"
@@ -167,10 +236,19 @@ const Customer = () => {
                             </span>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="inline-block text-left">
-                      <button
+                    <Dropdown overlay={menuSubject}>
+                        <Button>
+                          <Space>
+                          
+                          {selectSubject == ""? "Select Subject": selectSubject }
+                            <DownOutlined />
+                          </Space>
+                        </Button>
+                      </Dropdown>
+                      {/* <button
                         type="button"
                         className="z-10 inline-flex justify-between w-full h-8 px-4 py-1 border-2 border-gray-200 rounded-md hover:border-primary focus:outline-none focus:border-primary transition-colors"
                         id="menu-button"
@@ -227,7 +305,7 @@ const Customer = () => {
                             </span>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <button
                       className="btn-primary flex justify-center items-center h-8 "
@@ -237,8 +315,9 @@ const Customer = () => {
                       ค้นหา
                     </button>
                     <button
-                      className="btn-secondary  flex justify-center items-center  h-8 gap-2 "
+                      className="btn-secondary flex justify-center items-center h-8 gap-2 "
                       type="button"
+                      onClick={clickLog}
                     >
                       รีเซ็ต
                     </button>
